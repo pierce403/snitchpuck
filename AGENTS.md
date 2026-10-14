@@ -9,14 +9,14 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 - Historical vulnerability reports, vendor remediation statements, and product marketing are different evidence classes. Do not turn either reported possibilities or marketing claims into observed deployment facts.
 - Credentials remain outside source control. Inventory names/scopes only. Raw evidence and screenshots belong in ignored `evidence/`.
 - Worker `snitchpuck` serves ignored `dist/`. `deployment.json` must identify the exact Git revision after publication. Verify public bytes and HTTPS; a successful build alone does not establish liveness.
-- Custom domains and native Git builds remain gated on the missing account/registrar permissions recorded in `README.md`. Do not add active-domain routes before the zone is ready or broaden GitHub App access silently.
+- Apex/www custom-domain routes are tracked and staged on the existing Worker. Cloudflare accepted attachment while the zone was pending; never report activation until zone status, delegation, TLS, and public responses are verified. Preserve all unrelated DNS/mail records. Native Git remains disconnected; do not broaden GitHub App access silently.
 - Record useful wins, misses, and collaborator preferences here and in `NOTES.md`. The collaborator prefers concise reports and concrete live verification. Coordinate final commits/pushes through the lead agent for this initial publication; do not create competing deployments.
 
 ## Initial setup lessons (2026-10-14)
 
 - The new site is an independent project. PDXHF had unrelated changes and was left untouched.
 - Shell sandbox startup and CUA initialization hit host quota errors despite free filesystem space. Authorized elevated shell reads worked; this is an execution-environment limitation, not evidence of a project failure.
-- Available OAuth has Workers write permissions and zone read, but lacks zone/DNS write and Workers Builds access. The account's workers.dev subdomain is `bcrt43`; domain DNS currently points to Namecheap parking.
+- Available OAuth has Workers write permissions and zone read, but lacks zone/DNS write and Workers Builds access. The account's workers.dev subdomain is `bcrt43`; account/registrar changes were completed through the owner-approved UI workflow.
 - Use compatibility date 2026-10-13 with pinned Wrangler 4.149.0. The requested 2026-10-14 date passed dry-run packaging but refused local startup; 2026-10-13 is the bundled workerd limit. The coordinator approved aligning the date and retaining the dependency pin.
 - Static checks, build, and dry-run passed on the initial page; full npm audit found 0 vulnerabilities. Normalize directory roots with `path.resolve` before checking local link containment.
 
@@ -28,4 +28,14 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 
 - The HALO advisory URL now redirects to a generic product page. Use the verified Wayback capture from September 22, 2026 for the August 2025 advisory. Confirm archive content, not just status: the direct archive response needed gzip decompression.
 
-- Initial publication is live at https://snitchpuck.bcrt43.workers.dev/, serving site commit `1a294725bb3574d04cb068391dbdc42acec2179b`. Live browser checks proved source-byte identity, revision metadata, headers, 404s, and desktop/mobile behavior. Domain connection and native Git publishing still require the documented access. A documentation-only handoff commit need not trigger a new manual deployment.
+- Initial publication is live at https://snitchpuck.bcrt43.workers.dev/, serving site commit `1a294725bb3574d04cb068391dbdc42acec2179b`. Live browser checks proved source-byte identity, revision metadata, headers, 404s, and desktop/mobile behavior. Custom domains are now staged; activation and native Git publishing have separate verification gates below. A documentation-only handoff commit need not trigger a new manual deployment.
+
+## Custom-domain staging lessons (2026-10-14)
+
+- The owner explicitly approved Cloudflare Free, mail/TXT preservation, apex/www parking replacement, nameserver change, and Bot Preference Sync disabled. The approval gate is resolved; remaining delays are external delegation and TLS/activation.
+- Zone `bd99a6ff27aa02caffd242522c3617da` uses `cash.ns.cloudflare.com` / `hope.ns.cloudflare.com`. Five MX records and SPF were preserved. Only imported parking A/www CNAME records were removed after `evidence/dns-before.json` was saved.
+- The UI/API accepted pending-zone attachments for both production hostnames without asset redeployment. Track both `custom_domain` routes in source so later deploys preserve them. Attachment/certificate IDs alone do not prove active HTTPS.
+- At 23:52:04 UTC the .org authoritative delegation still pointed to Namecheap. Check authoritative delegation separately from recursive caches; then verify active zone and public TLS before claiming completion.
+- Builds UI currently offers “Connect your Git repository.” Native Git publishing is disconnected; the public repository is `pierce403/snitchpuck`. The deployed site remains commit `1a294725bb3574d04cb068391dbdc42acec2179b`, Worker version `484ff844-ff51-4676-93d5-d0367fb4d44b`.
+
+- For this asset-only Worker, the dashboard reports logs/traces disabled despite the configuration flags. Do not infer invocation-log availability from config alone.

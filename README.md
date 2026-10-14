@@ -20,15 +20,17 @@ Compatibility date is 2026-10-13, the newest date supported by the pinned local 
 
 ## Hosting
 
-`wrangler.jsonc` configures asset-only Worker `snitchpuck` in account `b6d1478423f0bb0c0477df387305e46b`, serving `dist/` with terminal 404 responses. Its verified live address is https://snitchpuck.bcrt43.workers.dev/. Initial publication serves commit `1a294725bb3574d04cb068391dbdc42acec2179b`, Cloudflare version `484ff844-ff51-4676-93d5-d0367fb4d44b`. Observability is enabled; static asset-only requests do not necessarily generate Worker invocation logs. `_headers` restricts browser capabilities and disallows third-party scripts, frames, and connections.
+`wrangler.jsonc` configures asset-only Worker `snitchpuck` in account `b6d1478423f0bb0c0477df387305e46b`, serving `dist/` with terminal 404 responses. Its verified live address is https://snitchpuck.bcrt43.workers.dev/. Initial publication serves commit `1a294725bb3574d04cb068391dbdc42acec2179b`, Cloudflare version `484ff844-ff51-4676-93d5-d0367fb4d44b`. Observability is requested in configuration; the asset-only dashboard reports logs/traces disabled and these requests do not produce Worker invocation logs. `_headers` restricts browser capabilities and disallows third-party scripts, frames, and connections.
 
-On October 14, 2026, read-only discovery found no `snitchpuck.org` Cloudflare zone, while public DNS used Namecheap nameservers and parking records. Existing Wrangler authentication can deploy Workers but cannot create zones/edit DNS or configure Workers Builds. The Worker is deployed and verified; custom-domain activation remains pending. Native Git publishing is not configured, so publication currently uses the authorized manual Wrangler workflow after build/checks.
+### Custom-domain setup: staged, activation pending
 
-### Custom domain activation
+The owner explicitly approved Cloudflare Free hosting, preserving mail/TXT records, replacing only apex/www parking, changing registrar nameservers, and leaving Bot Preference Sync disabled. The initial approval gate for these account/registrar changes is resolved.
 
-1. Add `snitchpuck.org` to the intended Cloudflare account using authorized zone-write access. Preserve any unrelated DNS/mail records.
-2. Change the registrar nameservers to the pair assigned to this new Cloudflare zone. Wait for the zone to become active.
-3. Add the following top-level routes to `wrangler.jsonc`, then publish through the established deployment workflow:
+Zone `bd99a6ff27aa02caffd242522c3617da` exists. Namecheap now has `cash.ns.cloudflare.com` and `hope.ns.cloudflare.com` saved. All five MX records and the SPF TXT were imported and preserved; only the imported parking A and www CNAME were removed after the public DNS backup in ignored `evidence/dns-before.json`.
+
+Cloudflare accepted both exact-host custom domains on production Worker `snitchpuck` while the zone was pending. The apex was attached through the UI; www through the Worker Domains API. Readback showed both enabled with certificate IDs. These attachments did not republish the assets: site commit `1a294725bb3574d04cb068391dbdc42acec2179b` and version `484ff844-ff51-4676-93d5-d0367fb4d44b` remain the deployment identity.
+
+The following routes are now tracked in `wrangler.jsonc` so future deployments preserve the domain setup:
 
 ```json
 "routes": [
@@ -37,13 +39,15 @@ On October 14, 2026, read-only discovery found no `snitchpuck.org` Cloudflare zo
 ]
 ```
 
-Custom domains require an active zone and exact hostnames. Cloudflare manages their DNS records and certificates. Check conflicting CNAMEs before attaching either hostname. Verify HTTPS, certificate validity, apex and www behavior, a missing path's 404, headers, and `deployment.json` revision. The canonical URL remains the apex.
+At 23:52:04 UTC on October 14, 2026, the zone remained pending and the .org delegation still listed Namecheap. Pending-zone attachment is staging, not proof of public activation. Before reporting the domain live, verify Cloudflare zone activation, authoritative delegation, issued TLS, apex/www HTTPS, terminal 404s, response headers, and the served `deployment.json` revision. The canonical URL remains the apex. Cloudflare manages custom-domain DNS and certificates; preserve unrelated DNS and mail records.
 
 ### Native Git publishing
 
-Prefer Cloudflare Workers Builds connected to this project's private GitHub repository, production branch `main`, root `/`, build command `npm run build`, deploy command `npx wrangler deploy`, paths `*`. Keep credentials in Cloudflare; no Cloudflare credential belongs in GitHub or this repository.
+The current Worker Builds UI shows **Connect your Git repository**: native Git publishing is not connected. Existing hosting uses the authorized manual Wrangler workflow. The source repository is public at https://github.com/pierce403/snitchpuck.
 
-The gate is a user-scoped token with **Workers Builds Configuration: Edit** (API permission: Workers CI Write), plus a pre-existing Cloudflare GitHub App installation permitted to read this repository. Recheck repository access before creating a connection; do not broaden the App's access silently. Read-only discovery of existing Builds configuration returned HTTP 403 with the available Wrangler OAuth token. Configure and verify this integration when suitable authorized access becomes available. Avoid overlapping manual and native Git deployments.
+For future native publishing, use production branch `main`, root `/`, build command `npm run build`, deploy command `npx wrangler deploy`, paths `*`. Keep credentials in Cloudflare; no Cloudflare credential belongs in GitHub or this repository.
+
+CLI setup requires a user-scoped token with **Workers Builds Configuration: Edit** (API permission: Workers CI Write), plus a pre-existing Cloudflare GitHub App installation permitted to read this repository. The signed-in dashboard is an alternative after repository access is verified. Recheck repository access before creating a connection; do not broaden the App's access silently. Read-only discovery of existing Builds configuration returned HTTP 403 with the available Wrangler OAuth token. Configure and verify this integration when suitable authorized access becomes available. Avoid overlapping manual and native Git deployments.
 
 The current REST sequence is repository connection (`PUT /accounts/{account}/builds/repos/connections`), Worker system tag (`GET /accounts/{account}/workers/scripts`), build-token metadata (`GET /accounts/{account}/builds/tokens`), trigger creation (`POST /accounts/{account}/builds/triggers`), and first build (`POST /accounts/{account}/builds/triggers/{trigger}/builds`). The tag is a system identifier, not the Worker name. Never print or retain token values for inventory.
 

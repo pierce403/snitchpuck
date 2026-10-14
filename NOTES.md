@@ -33,7 +33,7 @@ Requested outcome: a polished, single-page static research brief for the newly p
 
 ### Remaining publication gates
 
-1. Cloudflare zone creation and registrar nameserver update for apex/www HTTPS.
+1. External nameserver delegation, Cloudflare zone activation, and apex/www TLS/public verification; configuration is staged as recorded below.
 2. Native Git integration with verified existing GitHub App repository access and suitable Workers Builds permission.
 
 ### Evidence handling
@@ -50,13 +50,22 @@ Public source links are in `source-register.md`. Evidence files remain ignored. 
 
 ### Verified publication
 
-- Private source repository: https://github.com/pierce403/snitchpuck, default branch main. Initial site commit: `1a294725bb3574d04cb068391dbdc42acec2179b`.
+- Source repository: https://github.com/pierce403/snitchpuck (currently public), default branch main. Initial site commit: `1a294725bb3574d04cb068391dbdc42acec2179b`.
 - Deployed asset-only Worker to https://snitchpuck.bcrt43.workers.dev/; Cloudflare version `484ff844-ff51-4676-93d5-d0367fb4d44b`. No previous Worker existed under that name.
 - Browser HTTPS responses verified root 200 with exact source HTML hash; deployment.json reports the site commit and no-store; CSS 200; missing path, AGENTS.md and .env return 404. Security response headers are present.
 - Live Playwright at 1280 and 390px passed rendering, font/image loading, response anchor, nine source entries, no overflow, no page exceptions, and zero external page requests. Evidence: ignored live-browser.json, live-http.json, and live screenshots.
 - Python urllib received 403 for the new workers.dev host in this execution environment. A real browser returned 200 and provided response bodies/headers for the verification above; this was not treated as evidence of a broken deployment.
 - PDXHF still has only its pre-existing docs/index.md modification and .pages-update.json. No PDXHF files were changed.
-- The custom domain remains on Namecheap parking. The owner was asked to add it in Cloudflare and apply the assigned nameservers. Domain connection and native Builds remain unverified and incomplete.
+- Initial domain discovery found Namecheap parking. The later owner-approved setup is staged as recorded below; native Builds remains disconnected.
 - This final handoff commit changes documentation only. Public HTML/assets match the initial site commit, which deployment.json identifies.
 
 - GitHub reported that the repository moved from snitchpuck.org to snitchpuck during publication. The origin URL and handoff link now use the verified canonical location; no rename was initiated by this publishing workflow.
+
+### Owner-approved custom-domain setup
+
+- Explicit approval resolved the initial automatic-review/permission gate: Cloudflare Free, preserve mail/TXT, replace only apex/www parking, change nameservers, and leave Bot Preference Sync disabled.
+- Created zone `bd99a6ff27aa02caffd242522c3617da`; saved `cash.ns.cloudflare.com` and `hope.ns.cloudflare.com` at Namecheap. Verified import and preservation of five MX records plus SPF. Removed only the imported parking A/www CNAME after the public backup at ignored `evidence/dns-before.json`.
+- The Worker UI accepted apex attachment while pending; the Worker Domains API attached www. Readback verified both enabled for production service `snitchpuck`, with certificate IDs. No asset redeployment occurred; site commit `1a294725bb3574d04cb068391dbdc42acec2179b` / version `484ff844-ff51-4676-93d5-d0367fb4d44b` were retained.
+- Source now tracks both exact-host `custom_domain` routes. Pending attachment is staging; activation still needs zone/delegation/TLS/public checks. At 23:52:04 UTC on October 14, 2026, Cloudflare was pending and .org still delegated to Namecheap.
+- Current Builds UI shows “Connect your Git repository,” confirming no native Git connection in the UI. The source repository is currently public. Manual hosting is separate from automatic Git publication.
+- Coordinator owns the final commit/push. No redeploy is required for documentation alone; preserve deployed asset/revision evidence until a deliberate new content publication.

@@ -20,5 +20,15 @@
       "enabled": true,
       "head_sampling_rate": 0.01
     }
-  }
+  },
+  "routes": [
+    {
+      "pattern": "snitchpuck.org",
+      "custom_domain": true
+    },
+    {
+      "pattern": "www.snitchpuck.org",
+      "custom_domain": true
+    }
+  ]
 }
