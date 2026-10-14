@@ -33,10 +33,8 @@ Requested outcome: a polished, single-page static research brief for the newly p
 
 ### Remaining publication gates
 
-1. Build and browser verification against the finished homepage.
-2. Repository commit/push and verified Cloudflare publication.
-3. Cloudflare zone creation and registrar nameserver update for apex/www HTTPS.
-4. Native Git integration with verified existing GitHub App repository access and suitable Workers Builds permission.
+1. Cloudflare zone creation and registrar nameserver update for apex/www HTTPS.
+2. Native Git integration with verified existing GitHub App repository access and suitable Workers Builds permission.
 
 ### Evidence handling
 
@@ -49,3 +47,14 @@ Public source links are in `source-register.md`. Evidence files remain ignored. 
 - Five Playwright cases passed at 1440, 1280, 768, 390, and 320px with no overflow, missing images, console exceptions, or broken story navigation. Separate checks confirmed the keyboard skip link, source 9 anchor, and zero third-party page requests.
 - A 378px intrinsic diagram width caused the first mobile overflow. Flexible steps and min-width:0 on grid children resolved it.
 - Source synthesis was independently checked against per-source budgets, with one short vendor quote. Public copy distinguishes research demonstrations, vendor claims, and deployment evidence.
+
+### Verified publication
+
+- Private source repository: https://github.com/pierce403/snitchpuck.org, default branch main. Initial site commit: `1a294725bb3574d04cb068391dbdc42acec2179b`.
+- Deployed asset-only Worker to https://snitchpuck.bcrt43.workers.dev/; Cloudflare version `484ff844-ff51-4676-93d5-d0367fb4d44b`. No previous Worker existed under that name.
+- Browser HTTPS responses verified root 200 with exact source HTML hash; deployment.json reports the site commit and no-store; CSS 200; missing path, AGENTS.md and .env return 404. Security response headers are present.
+- Live Playwright at 1280 and 390px passed rendering, font/image loading, response anchor, nine source entries, no overflow, no page exceptions, and zero external page requests. Evidence: ignored live-browser.json, live-http.json, and live screenshots.
+- Python urllib received 403 for the new workers.dev host in this execution environment. A real browser returned 200 and provided response bodies/headers for the verification above; this was not treated as evidence of a broken deployment.
+- PDXHF still has only its pre-existing docs/index.md modification and .pages-update.json. No PDXHF files were changed.
+- The custom domain remains on Namecheap parking. The owner was asked to add it in Cloudflare and apply the assigned nameservers. Domain connection and native Builds remain unverified and incomplete.
+- This final handoff commit changes documentation only. Public HTML/assets match the initial site commit, which deployment.json identifies.

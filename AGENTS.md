@@ -27,3 +27,5 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 - Fonts are locally hosted with their OFL license notices. The hero and social image use an original conceptual illustration; avoid presenting it as a hardware diagram. No scripts, analytics, remote fonts, or embedded players are required.
 
 - The HALO advisory URL now redirects to a generic product page. Use the verified Wayback capture from September 22, 2026 for the August 2025 advisory. Confirm archive content, not just status: the direct archive response needed gzip decompression.
+
+- Initial publication is live at https://snitchpuck.bcrt43.workers.dev/, serving site commit `1a294725bb3574d04cb068391dbdc42acec2179b`. Live browser checks proved source-byte identity, revision metadata, headers, 404s, and desktop/mobile behavior. Domain connection and native Git publishing still require the documented access. A documentation-only handoff commit need not trigger a new manual deployment.

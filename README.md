@@ -20,9 +20,9 @@ Compatibility date is 2026-10-13, the newest date supported by the pinned local 
 
 ## Hosting
 
-`wrangler.jsonc` configures asset-only Worker `snitchpuck` in account `b6d1478423f0bb0c0477df387305e46b`, serving `dist/` with terminal 404 responses. Its temporary address is `https://snitchpuck.bcrt43.workers.dev/` once deployed. Observability is enabled; static asset-only requests do not necessarily generate Worker invocation logs. `_headers` restricts browser capabilities and disallows third-party scripts, frames, and connections.
+`wrangler.jsonc` configures asset-only Worker `snitchpuck` in account `b6d1478423f0bb0c0477df387305e46b`, serving `dist/` with terminal 404 responses. Its verified live address is https://snitchpuck.bcrt43.workers.dev/. Initial publication serves commit `1a294725bb3574d04cb068391dbdc42acec2179b`, Cloudflare version `484ff844-ff51-4676-93d5-d0367fb4d44b`. Observability is enabled; static asset-only requests do not necessarily generate Worker invocation logs. `_headers` restricts browser capabilities and disallows third-party scripts, frames, and connections.
 
-On October 14, 2026, read-only discovery found no `snitchpuck.org` Cloudflare zone, while public DNS used Namecheap nameservers and parking records. Existing Wrangler authentication can deploy Workers but cannot create zones/edit DNS or configure Workers Builds. No deployment or domain activation is established by this source configuration.
+On October 14, 2026, read-only discovery found no `snitchpuck.org` Cloudflare zone, while public DNS used Namecheap nameservers and parking records. Existing Wrangler authentication can deploy Workers but cannot create zones/edit DNS or configure Workers Builds. The Worker is deployed and verified; custom-domain activation remains pending. Native Git publishing is not configured, so publication currently uses the authorized manual Wrangler workflow after build/checks.
 
 ### Custom domain activation
 
