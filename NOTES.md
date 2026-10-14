@@ -50,7 +50,7 @@ Public source links are in `source-register.md`. Evidence files remain ignored. 
 
 ### Verified publication
 
-- Private source repository: https://github.com/pierce403/snitchpuck.org, default branch main. Initial site commit: `1a294725bb3574d04cb068391dbdc42acec2179b`.
+- Private source repository: https://github.com/pierce403/snitchpuck, default branch main. Initial site commit: `1a294725bb3574d04cb068391dbdc42acec2179b`.
 - Deployed asset-only Worker to https://snitchpuck.bcrt43.workers.dev/; Cloudflare version `484ff844-ff51-4676-93d5-d0367fb4d44b`. No previous Worker existed under that name.
 - Browser HTTPS responses verified root 200 with exact source HTML hash; deployment.json reports the site commit and no-store; CSS 200; missing path, AGENTS.md and .env return 404. Security response headers are present.
 - Live Playwright at 1280 and 390px passed rendering, font/image loading, response anchor, nine source entries, no overflow, no page exceptions, and zero external page requests. Evidence: ignored live-browser.json, live-http.json, and live screenshots.
@@ -58,3 +58,5 @@ Public source links are in `source-register.md`. Evidence files remain ignored. 
 - PDXHF still has only its pre-existing docs/index.md modification and .pages-update.json. No PDXHF files were changed.
 - The custom domain remains on Namecheap parking. The owner was asked to add it in Cloudflare and apply the assigned nameservers. Domain connection and native Builds remain unverified and incomplete.
 - This final handoff commit changes documentation only. Public HTML/assets match the initial site commit, which deployment.json identifies.
+
+- GitHub reported that the repository moved from snitchpuck.org to snitchpuck during publication. The origin URL and handoff link now use the verified canonical location; no rename was initiated by this publishing workflow.
