@@ -39,3 +39,8 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 - Builds UI currently offers “Connect your Git repository.” Native Git publishing is disconnected; the public repository is `pierce403/snitchpuck`. The deployed site remains commit `1a294725bb3574d04cb068391dbdc42acec2179b`, Worker version `484ff844-ff51-4676-93d5-d0367fb4d44b`.
 
 - For this asset-only Worker, the dashboard reports logs/traces disabled despite the configuration flags. Do not infer invocation-log availability from config alone.
+
+## Activation follow-up (2026-10-14 local)
+
+- Cloudflare activated at 23:57:06 UTC. At 00:27 UTC October 15, .org delegation and both authoritative Cloudflare servers were correct, but recursive caches still returned some old Namecheap parking records. Treat authoritative cutover, valid edge TLS/HTTP, and ordinary visitor availability as separate observations.
+- Direct edge checks with normal certificate/hostname validation served the expected site revision for both apex/www. The ordinary local connection still timed out during cache propagation; do not claim universal availability from a forced edge lookup. No additional configuration or asset deployment was needed.

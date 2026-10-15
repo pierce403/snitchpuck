@@ -33,7 +33,7 @@ Requested outcome: a polished, single-page static research brief for the newly p
 
 ### Remaining publication gates
 
-1. External nameserver delegation, Cloudflare zone activation, and apex/www TLS/public verification; configuration is staged as recorded below.
+1. Ordinary visitor DNS availability: authoritative delegation, active zone, and direct edge apex/www TLS/HTTP now pass; some recursive caches still retain parking records, as recorded below.
 2. Native Git integration with verified existing GitHub App repository access and suitable Workers Builds permission.
 
 ### Evidence handling
@@ -69,3 +69,10 @@ Public source links are in `source-register.md`. Evidence files remain ignored. 
 - Source now tracks both exact-host `custom_domain` routes. Pending attachment is staging; activation still needs zone/delegation/TLS/public checks. At 23:52:04 UTC on October 14, 2026, Cloudflare was pending and .org still delegated to Namecheap.
 - Current Builds UI shows “Connect your Git repository,” confirming no native Git connection in the UI. The source repository is currently public. Manual hosting is separate from automatic Git publication.
 - Coordinator owns the final commit/push. No redeploy is required for documentation alone; preserve deployed asset/revision evidence until a deliberate new content publication.
+
+### Activation follow-up (October 14 local; October 15 UTC)
+
+- Zone API reports active, activated_on `2026-10-14T23:57:06.666101Z`. At 00:27 UTC, .org delegates to cash/hope, and both authoritative Cloudflare servers return `104.21.22.208` / `172.67.207.23` for apex/www.
+- Direct edge HTTPS with standard CA and hostname validation returns HTTP 200 for both hostnames and deployment revision `1a294725bb3574d04cb068391dbdc42acec2179b`. The certificate covers both names. Apex homepage also returns 200.
+- Recursive DNS answers remain mixed with old Namecheap parking values. An ordinary local curl timed out and browser navigation did not load during this check. The edge is ready, but ordinary visitor availability remains inconsistent while caches expire; no exact global completion time was claimed.
+- No additional remote changes, asset redeployments, or automation were performed for this status check.

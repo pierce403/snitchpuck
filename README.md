@@ -22,7 +22,7 @@ Compatibility date is 2026-10-13, the newest date supported by the pinned local 
 
 `wrangler.jsonc` configures asset-only Worker `snitchpuck` in account `b6d1478423f0bb0c0477df387305e46b`, serving `dist/` with terminal 404 responses. Its verified live address is https://snitchpuck.bcrt43.workers.dev/. Initial publication serves commit `1a294725bb3574d04cb068391dbdc42acec2179b`, Cloudflare version `484ff844-ff51-4676-93d5-d0367fb4d44b`. Observability is requested in configuration; the asset-only dashboard reports logs/traces disabled and these requests do not produce Worker invocation logs. `_headers` restricts browser capabilities and disallows third-party scripts, frames, and connections.
 
-### Custom-domain setup: staged, activation pending
+### Custom-domain setup: active, DNS caches still updating
 
 The owner explicitly approved Cloudflare Free hosting, preserving mail/TXT records, replacing only apex/www parking, changing registrar nameservers, and leaving Bot Preference Sync disabled. The initial approval gate for these account/registrar changes is resolved.
 
@@ -39,7 +39,7 @@ The following routes are now tracked in `wrangler.jsonc` so future deployments p
 ]
 ```
 
-At 23:52:04 UTC on October 14, 2026, the zone remained pending and the .org delegation still listed Namecheap. Pending-zone attachment is staging, not proof of public activation. Before reporting the domain live, verify Cloudflare zone activation, authoritative delegation, issued TLS, apex/www HTTPS, terminal 404s, response headers, and the served `deployment.json` revision. The canonical URL remains the apex. Cloudflare manages custom-domain DNS and certificates; preserve unrelated DNS and mail records.
+Cloudflare activated the zone at 23:57:06 UTC on October 14, 2026. At 00:27 UTC on October 15 (October 14 in Los Angeles), the .org delegation and both Cloudflare authoritative servers pointed to the correct setup. Direct edge HTTPS checks, with normal certificate and hostname validation, returned the expected homepage and deployment revision for apex/www. Public recursive resolvers still held some Namecheap parking records, and a normal local connection timed out; full user-visible availability is still subject to those DNS caches expiring. This is separate from a routing or TLS configuration failure. The canonical URL remains the apex. Cloudflare manages custom-domain DNS and certificates; preserve unrelated DNS and mail records.
 
 ### Native Git publishing
 
