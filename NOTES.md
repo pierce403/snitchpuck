@@ -124,3 +124,10 @@ Public source links are in `source-register.md`. Evidence files remain ignored. 
 - Preserve the network/password/software prerequisites, demonstration-versus-observed-exploitation distinction, historical firmware/date scope, vendor attribution, all ten source anchors and the deck/photo-assistance credit during copy edits.
 - Added optional `scripts/make-social.py` regeneration using existing local photograph/fonts. Manual command: `python3 scripts/make-social.py`; optional dependencies are Pillow, fontTools and Brotli. The normal npm static build remains Node-only and copies the prepared social image.
 - Two independent reviews found no factual/citation drift or remaining editorial filler. CUA/Playwright checks at 1280×900, 390×844 and 320×844 passed with no horizontal overflow, missing images or console warnings/errors. Research-summary navigation and ten sources remain valid. Desktop/mobile screenshots and `plain-copy-qa.json` are in the task artifact directory. The social image was regenerated and visually inspected; static build and Wrangler dry-run passed. Exact-revision publication follows the reviewed source commit.
+
+### Verified plain-copy publication
+
+- Published source commit `bb7d65311013e70e8f5b05f76f632c36da08ad8c` after the reviewed GitHub push. Cloudflare deployment `7a14961c-67e8-4849-a946-428fe3926190` serves version `730b741e-3554-4f78-a6ed-efcd1f6c6c1c` at 100%, confirmed by API readback.
+- Ordinary apex HTTPS returned exact source bytes for the homepage, stylesheet, social preview and 404 document; deployment.json identifies the source revision. The new title is present and the old headline absent. www still returns 301 to HTTPS apex with its query preserved. Raw evidence is ignored `evidence/plain-copy-live.json`.
+- A real browser verified the new headline, loaded image and ten sources at the apex; desktop 1280px and mobile 390px have no horizontal overflow. The live screenshot is in the task artifact directory as `plain-copy-live.jpg`.
+- This following commit records verification only. Public deployment metadata intentionally identifies the content revision above.
