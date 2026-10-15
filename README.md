@@ -16,6 +16,14 @@ npm run dev
 
 `site/` is the source; `scripts/build.mjs` copies it into ignored `dist/`. The build writes `dist/deployment.json` using `CF_COMMIT_SHA`, `GITHUB_SHA`, or the local Git HEAD. Before Git initialization, the marker is `uncommitted`. `npm run check` checks metadata, reviewed source links, local files, fragment targets, and duplicate IDs. It does not establish the truth of source claims or verify live external URLs. Run browser layout/accessibility checks at desktop and mobile widths before publishing design changes.
 
+Optional manual social-image regeneration:
+
+```sh
+python3 scripts/make-social.py
+```
+
+This helper requires Pillow, fontTools and Brotli and reads the existing local photograph and OFL font assets. It writes `site/assets/social.png`. The normal npm static build copies the prepared image and has no Python dependency.
+
 Compatibility date is 2026-10-13, the newest date supported by the pinned local runtime. The requested 2026-10-14 date refused local startup, so the date was aligned without changing dependencies. Review and test compatibility changes when updating Wrangler.
 
 ## Hosting
@@ -62,6 +70,8 @@ The current REST sequence is repository connection (`PUT /accounts/{account}/bui
 Reference: [custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/), [Builds API setup](https://developers.cloudflare.com/workers/ci-cd/builds/api-reference/).
 
 ## Editorial boundaries
+
+Use plain factual titles and prose throughout the public page, metadata, 404 and social preview. The current copy revision uses “HALO sensor security research” and removes promotional slogans, metaphors and editorial filler. Keep published source titles and attributed quotations accurate. Desktop/mobile, source-preservation and build checks passed before publication; NOTES.md records the exact release and live checks.
 
 `source-register.md` records the reviewed sources and how they support the page. Keep historical researcher findings, vendor claims/remediation, and marketing descriptions distinct. Do not imply these historical vulnerabilities affect every present deployment or that researchers documented covert recording by an operator. Raw downloaded research evidence and browser QA artifacts stay in ignored `evidence/`.
 

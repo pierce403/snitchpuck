@@ -4,6 +4,7 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 
 - Read `README.md`, `source-register.md`, and `NOTES.md` before changing deployment or editorial claims.
 - Public source lives in `site/`. Keep the main experience a single static HTML page with local assets and clear source links.
+- Public copy must be plain and factual. The collaborator rejected the promotional title and “cringe prose”; use descriptive headings and direct summaries, without slogans, metaphors, rhetorical questions, or editorial filler. Preserve authentic source titles and attributed quotations.
 - Use `npm ci`, `npm run check`, `npm run build`, and `npm run deploy:check`. Wrangler is pinned to 4.149.0; `sharp` is overridden to 0.35.5, matching the verified patched baseline.
 - Browser-check layout changes at desktop and mobile widths, including link/anchor navigation, focus visibility, and horizontal overflow.
 - Historical vulnerability reports, vendor remediation statements, and product marketing are different evidence classes. Do not turn either reported possibilities or marketing claims into observed deployment facts.
@@ -71,3 +72,9 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 - For social artwork, decode the existing OFL WOFF2 fonts with fontTools and render with Pillow to keep the intended palette independent of browser extensions. Viewport overrides must be applied after creating a new browser tab; verify innerWidth rather than assuming the override inherited.
 
 - The photo publication also resolved the observed visitor gate: the network-supplied resolver now returns CF addresses, ordinary apex HTML/photo/social responses match source bytes, and the real browser loads the apex at desktop/mobile widths. Old puck.svg and missing paths return 404; www remains a 301. Documentation-only commits after this content revision do not require an asset redeploy.
+
+## Plain factual copy (2026-10-14 local)
+
+- New heading/title: “HALO sensor security research.” The revision removes the thesis, takeaway and editorial-question sections and makes descriptions, navigation, accessible text, 404 and social-preview copy factual. Preserve the research prerequisites, historical dates/versions, vendor attribution, ten sources and photograph credit.
+- `python3 scripts/make-social.py` optionally regenerates the preview using the existing local photograph/fonts. It requires Pillow, fontTools and Brotli; the normal npm static build has no Python dependency.
+- New-copy CUA/Playwright checks passed at 1280×900, 390×844 and 320×844 with no horizontal overflow, missing images or console warnings/errors. Research navigation and all ten sources remain valid. Independent editorial/factual review, static build and Wrangler dry-run passed; exact-revision publication is the remaining gate. Earlier photo-publication results remain historical.

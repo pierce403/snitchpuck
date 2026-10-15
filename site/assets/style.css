@@ -8,3 +8,5 @@
 .promise-grid>div{min-width:0}@media(max-width:760px){.signal-diagram{gap:8px;min-width:0}.signal-step{width:auto;flex:1;min-width:0}.diagram-arrow{font-size:18px;flex:0 0 auto}}
 
 .hero-art{padding:10px;background:#faf8f1;border:1px solid var(--line);box-shadow:7px 7px 0 #dedbd1}.hero-art img{display:block}.hero-art figcaption{text-align:left;line-height:1.6;padding:11px 3px 2px}.hero-art figcaption a{color:var(--ink);text-underline-offset:3px}.watch-actions{display:flex;align-items:center;flex-wrap:wrap;gap:22px;margin-top:22px}@media(max-width:760px){.hero-art{width:100%;margin-top:32px;box-shadow:5px 5px 0 #dedbd1}}
+
+.hero h1{font-size:clamp(60px,8vw,118px);line-height:.92}@media(max-width:760px){.hero h1{font-size:clamp(50px,16vw,100px);line-height:.92;letter-spacing:-1px}}
