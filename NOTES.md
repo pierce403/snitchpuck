@@ -135,3 +135,5 @@ Public source links are in `source-register.md`. Evidence files remain ignored. 
 ### Display-name correction
 
 - Owner requested Rey instead of Reynaldo. Updated public text/metadata, photo credit, source labels, social-image generator and current documentation wording. All homepage href/src values were compared before/after and remain byte-for-byte unchanged, including the official PDF filename. Publication verification follows the source commit.
+
+- Name correction published as source `f6b98e883de831d654299e8d2a33193a355ca8a9`, Worker version `495083be-7b6a-4c13-9921-4b623db28b1e`. Existing checks/build/dry-run, browser preview and independent name/link review passed. Ordinary apex HTTPS returned source-identical HTML/social image and the exact revision marker; real browser confirms Rey in text/metadata and ten sources. Evidence: ignored `evidence/rey-live.json`; task screenshot `rey-live.jpg`.

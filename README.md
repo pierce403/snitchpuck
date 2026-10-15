@@ -28,7 +28,7 @@ Compatibility date is 2026-10-13, the newest date supported by the pinned local 
 
 ## Hosting
 
-`wrangler.jsonc` configures asset-only Worker `snitchpuck` in account `b6d1478423f0bb0c0477df387305e46b`, serving `dist/` with terminal 404 responses. The primary live address is https://snitchpuck.org/; www permanently redirects there. Current production serves commit `bb7d65311013e70e8f5b05f76f632c36da08ad8c`, Cloudflare version `730b741e-3554-4f78-a6ed-efcd1f6c6c1c`. The workers.dev preview remains available. The initial publication served commit `1a294725bb3574d04cb068391dbdc42acec2179b`, Cloudflare version `484ff844-ff51-4676-93d5-d0367fb4d44b`. Observability is requested in configuration; the asset-only dashboard reports logs/traces disabled and these requests do not produce Worker invocation logs. `_headers` restricts browser capabilities and disallows third-party scripts, frames, and connections.
+`wrangler.jsonc` configures asset-only Worker `snitchpuck` in account `b6d1478423f0bb0c0477df387305e46b`, serving `dist/` with terminal 404 responses. The primary live address is https://snitchpuck.org/; www permanently redirects there. Current production serves commit `f6b98e883de831d654299e8d2a33193a355ca8a9`, Cloudflare version `495083be-7b6a-4c13-9921-4b623db28b1e`. The workers.dev preview remains available. The initial publication served commit `1a294725bb3574d04cb068391dbdc42acec2179b`, Cloudflare version `484ff844-ff51-4676-93d5-d0367fb4d44b`. Observability is requested in configuration; the asset-only dashboard reports logs/traces disabled and these requests do not produce Worker invocation logs. `_headers` restricts browser capabilities and disallows third-party scripts, frames, and connections.
 
 ### Custom-domain setup: active and verified
 
