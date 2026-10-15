@@ -76,3 +76,8 @@ Public source links are in `source-register.md`. Evidence files remain ignored. 
 - Direct edge HTTPS with standard CA and hostname validation returns HTTP 200 for both hostnames and deployment revision `1a294725bb3574d04cb068391dbdc42acec2179b`. The certificate covers both names. Apex homepage also returns 200.
 - Recursive DNS answers remain mixed with old Namecheap parking values. An ordinary local curl timed out and browser navigation did not load during this check. The edge is ready, but ordinary visitor availability remains inconsistent while caches expire; no exact global completion time was claimed.
 - No additional remote changes, asset redeployments, or automation were performed for this status check.
+
+### Static serving confirmation (October 14 local)
+
+- Both custom hostnames passed direct Cloudflare edge checks with normal TLS verification: homepage, CSS, and puck SVG each returned 200 and exact source hashes; deployment.json identified the expected site commit; a missing path returned 404. Evidence: ignored `evidence/custom-domain-edge-check.json`.
+- Ordinary apex requests still timed out and www requests reached a destination with an SSL EOF. Recursive DNS checks still returned the old parking records. The CF active status confirms zone activation, while these visitor checks continue to distinguish cached DNS from correctly serving static assets.

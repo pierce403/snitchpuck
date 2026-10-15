@@ -9,7 +9,7 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 - Historical vulnerability reports, vendor remediation statements, and product marketing are different evidence classes. Do not turn either reported possibilities or marketing claims into observed deployment facts.
 - Credentials remain outside source control. Inventory names/scopes only. Raw evidence and screenshots belong in ignored `evidence/`.
 - Worker `snitchpuck` serves ignored `dist/`. `deployment.json` must identify the exact Git revision after publication. Verify public bytes and HTTPS; a successful build alone does not establish liveness.
-- Apex/www custom-domain routes are tracked and staged on the existing Worker. Cloudflare accepted attachment while the zone was pending; never report activation until zone status, delegation, TLS, and public responses are verified. Preserve all unrelated DNS/mail records. Native Git remains disconnected; do not broaden GitHub App access silently.
+- Apex/www custom-domain routes are tracked and attached to the active zone on the existing Worker. Cloudflare accepted attachment while the zone was pending; never report activation until zone status, delegation, TLS, and public responses are verified. Preserve all unrelated DNS/mail records. Native Git remains disconnected; do not broaden GitHub App access silently.
 - Record useful wins, misses, and collaborator preferences here and in `NOTES.md`. The collaborator prefers concise reports and concrete live verification. Coordinate final commits/pushes through the lead agent for this initial publication; do not create competing deployments.
 
 ## Initial setup lessons (2026-10-14)
@@ -44,3 +44,5 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 
 - Cloudflare activated at 23:57:06 UTC. At 00:27 UTC October 15, .org delegation and both authoritative Cloudflare servers were correct, but recursive caches still returned some old Namecheap parking records. Treat authoritative cutover, valid edge TLS/HTTP, and ordinary visitor availability as separate observations.
 - Direct edge checks with normal certificate/hostname validation served the expected site revision for both apex/www. The ordinary local connection still timed out during cache propagation; do not claim universal availability from a forced edge lookup. No additional configuration or asset deployment was needed.
+
+- Follow-up serving check: both custom hostnames return exact source HTML, CSS, and puck illustration bytes over normally validated TLS when resolving to the authoritative Cloudflare edge; missing paths return 404. Ordinary DNS still reached stale parking records during the check. Evidence is ignored `evidence/custom-domain-edge-check.json`.
