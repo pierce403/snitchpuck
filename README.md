@@ -41,6 +41,14 @@ The following routes are now tracked in `wrangler.jsonc` so future deployments p
 
 Cloudflare activated the zone at 23:57:06 UTC on October 14, 2026. At 00:27 UTC on October 15 (October 14 in Los Angeles), the .org delegation and both Cloudflare authoritative servers pointed to the correct setup. Direct edge HTTPS checks, with normal certificate and hostname validation, returned the expected homepage and deployment revision for apex/www. Public recursive resolvers still held some Namecheap parking records, and a normal local connection timed out; full user-visible availability is still subject to those DNS caches expiring. A later ordinary HTTPS and browser check successfully rendered `https://www.snitchpuck.org/`; the apex remained inconsistent across recursive resolvers. Cloudflare public resolver refresh requests were queued, and its apex lookup subsequently returned the correct addresses. This is separate from a routing or TLS configuration failure. The canonical URL remains the apex. Cloudflare manages custom-domain DNS and certificates; preserve unrelated DNS and mail records.
 
+### Canonical www redirect
+
+`http://www.snitchpuck.org/*` and `https://www.snitchpuck.org/*` permanently redirect to `https://snitchpuck.org/*` with status **301**, retaining the original path and query string. The apex serves the site directly.
+
+The active zone Single Redirect is `81aad0d2bb78457c97275eec2913772e`; its public configuration is recorded in `cloudflare/www-redirect.json`. This JSON documents the live rule and is not automatically applied by Wrangler. The rule runs at the zone before the Worker. Keep both custom-domain attachments and the redirect rule during future hosting updates. This change does not republish the static assets.
+
+[Cloudflare Single Redirect settings](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/settings/). Workers Static Assets `_redirects` supports path rules but cannot match the incoming hostname.
+
 ### Native Git publishing
 
 The current Worker Builds UI shows **Connect your Git repository**: native Git publishing is not connected. Existing hosting uses the authorized manual Wrangler workflow. The source repository is public at https://github.com/pierce403/snitchpuck.

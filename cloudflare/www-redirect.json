@@ -1,0 +1,16 @@
+{
+  "id": "81aad0d2bb78457c97275eec2913772e",
+  "description": "Canonical www to snitchpuck.org",
+  "enabled": true,
+  "action": "redirect",
+  "expression": "(http.host eq \"www.snitchpuck.org\")",
+  "action_parameters": {
+    "from_value": {
+      "target_url": {
+        "expression": "concat(\"https://snitchpuck.org\", http.request.uri.path)"
+      },
+      "status_code": 301,
+      "preserve_query_string": true
+    }
+  }
+}

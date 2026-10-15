@@ -93,3 +93,10 @@ Public source links are in `source-register.md`. Evidence files remain ignored. 
 
 - Owner emphasized `https://snitchpuck.org/` as the requested address. www is a diagnostic alias, not a replacement. Site canonical URL, Open Graph URL, sitemap and robots already name the apex.
 - Google/Cloudflare UDP and DoH queries now return the correct apex CF addresses. The computer's network-supplied resolver still returns parking `162.255.119.52`, including `resolvectl query --cache=no`; ordinary apex HTTP therefore times out while the CF-edge request succeeds. This isolates the observed remaining failure upstream of the local OS cache. No host DNS, hosts file, router, TLS validation, or unrelated configuration was changed.
+
+### Owner-requested www canonical redirect
+
+- Deployed Cloudflare Single Redirect `81aad0d2bb78457c97275eec2913772e` in zone `bd99a6ff27aa02caffd242522c3617da`. UI readback shows Active. Match `(http.host eq "www.snitchpuck.org")`, dynamic target `concat("https://snitchpuck.org", http.request.uri.path)`, 301, preserve_query_string true. Recorded exact public rule in `cloudflare/www-redirect.json`.
+- Six live checks passed: ordinary www root and CSS/query requests return exact expected Location; direct-edge HTTP www and missing-path/query return 301; edge apex root and CSS return 200 without a Location. No asset redeploy, runtime code, dependency change, DNS mutation, or unrelated rule change was needed.
+- Workers `_redirects` cannot host-match: pinned parseRedirects passes onlyRelative=true when validating the source. The runtime matcher alone was misleading; checked the parser and current official docs before choosing a zone rule.
+- Screenshot of the active rule is in the task artifact directory as `www-redirect-active.jpg`; raw response verification is ignored `evidence/www-redirect-live.json`.

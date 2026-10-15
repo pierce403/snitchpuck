@@ -55,3 +55,9 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 
 - Collaborator clarified the primary address must remain `https://snitchpuck.org/`. Present www only as a diagnostic alias; its successful rendering does not complete apex visitor verification. Canonical, Open Graph, robots/sitemap already use the apex.
 - When public DNS was correct, `getent ahostsv4` and `resolvectl query --cache=no snitchpuck.org` still returned the old parking address through the network-supplied DNS resolver. An uncached OS query distinguishes upstream network caching from the computer's local cache. Do not change host DNS settings or unrelated network infrastructure to conceal this discrepancy.
+
+## Canonical www redirect (2026-10-14 local)
+
+- Owner requested www always redirect to the apex. Cloudflare zone Single Redirect `81aad0d2bb78457c97275eec2913772e` matches only `www.snitchpuck.org`, returns 301 to HTTPS apex plus original path, and preserves the query string. Public configuration is recorded in `cloudflare/www-redirect.json`; it is an operational record, not an automatically applied Wrangler resource. Preserve it during hosting changes.
+- Do not implement hostname redirects in Workers Static Assets `_redirects`: the current docs and pinned Wrangler parser reject absolute source URLs. Its shared runtime has host-matching code, which alone does not establish supported input. A path-only catchall on this shared Worker would redirect the apex to itself.
+- Live HTTP/HTTPS www checks passed, including existing assets, missing paths, and encoded query values; apex root/CSS stayed 200 without Location at the edge. Rule deployment did not republish assets or change their revision. Evidence: ignored `evidence/www-redirect-live.json`.
