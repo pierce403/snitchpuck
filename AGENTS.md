@@ -46,3 +46,9 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 - Direct edge checks with normal certificate/hostname validation served the expected site revision for both apex/www. The ordinary local connection still timed out during cache propagation; do not claim universal availability from a forced edge lookup. No additional configuration or asset deployment was needed.
 
 - Follow-up serving check: both custom hostnames return exact source HTML, CSS, and puck illustration bytes over normally validated TLS when resolving to the authoritative Cloudflare edge; missing paths return 404. Ordinary DNS still reached stale parking records during the check. Evidence is ignored `evidence/custom-domain-edge-check.json`.
+
+## Log diagnosis and ordinary visitor check (2026-10-14 local)
+
+- `wrangler tail snitchpuck --format json` returns API error 100311: cannot tail a Worker which only has assets. The dashboard also reports static-only metrics unavailable and Observability disabled; an empty log view is not a deployment failure. Deployment history/API and exact live asset checks are the useful evidence for this architecture.
+- The dashboard shows version `484ff844` Ready at 100%. Ordinary HTTPS and a real browser now load `https://www.snitchpuck.org/` with source-identical HTML, a loaded illustration, and no horizontal overflow. Apex visitor availability still varies with recursive DNS.
+- All six .org nameservers and both Cloudflare authoritative servers agree on delegation/records; mixed public caches also occur over DoH. Cloudflare public resolver cache refresh requests for apex NS/A and www A were queued through its documented tool. Its apex answer then changed to CF addresses; other caches still held parking. Do not report a queued refresh as global completion.
