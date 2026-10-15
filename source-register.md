@@ -18,3 +18,9 @@ Keep reported findings separate from vendor claims. Capability does not prove an
 9. Motorola Solutions, 2024 utilities solution brief, PDF page 4. Supports the short no-recording quote; current Avigilon page supports capabilities only. https://www.motorolasolutions.com/content/dam/msi/images/solutions/utilities/solving_for_safer_utilities_solution_brief_xp.pdf
 
 The original advisory URL now redirects to a generic Avigilon product page. The linked Wayback capture was verified by content (not status alone). Direct urllib reads required gzip decompression; HTTP 200 alone was insufficient.
+
+## Public presentation and device photograph
+
+10. [Official DEF CON 33 slide deck](https://media.defcon.org/DEF%20CON%2033/DEF%20CON%2033%20presentations/Reynaldo%20nyx%20-%20Unmasking%20the%20snitch%20puck.pdf), Reynaldo and nyx, 103 pages. Download verified from the conference archive; SHA-256 `69175a4b0fcb6804bff0b982bd4afcebcd522aeab444b03063edf622741e343b`. Page 29 shows the actual HALO 3C on the workbench; pages 30, 34 and 35 show its internals. The page 29 embedded JPEG (PDF image object 128, 1913×1440) supplies `site/assets/halo-3c-photo.webp`, resized to 1600×1204 and encoded as WebP. The same photo appears in the social preview. No generative alteration or background replacement was made.
+
+The deck's page 101 thanks Matt H for photo assistance. Retain that acknowledgement and the researcher/deck link with this excerpt; no separate open license was found in the PDF, and the recording's license is not asserted for the PDF asset. Raw PDF, extracted originals, and renders stay in ignored `evidence/`. The full deck remains hosted by DEF CON rather than being republished here.

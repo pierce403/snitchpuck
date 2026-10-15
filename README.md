@@ -64,3 +64,9 @@ Reference: [custom domains](https://developers.cloudflare.com/workers/configurat
 ## Editorial boundaries
 
 `source-register.md` records the reviewed sources and how they support the page. Keep historical researcher findings, vendor claims/remediation, and marketing descriptions distinct. Do not imply these historical vulnerabilities affect every present deployment or that researchers documented covert recording by an operator. Raw downloaded research evidence and browser QA artifacts stay in ignored `evidence/`.
+
+## Public slides and device photograph
+
+The photo revision replaces the conceptual hero/social artwork with a real HALO 3C photograph from page 29 of [Reynaldo and nyx's official DEF CON 33 slides](https://media.defcon.org/DEF%20CON%2033/DEF%20CON%2033%20presentations/Reynaldo%20nyx%20-%20Unmasking%20the%20snitch%20puck.pdf). Source 10 and visible page links identify the deck. `site/assets/halo-3c-photo.webp` is a 1600×1204 derivative of its 1913×1440 embedded photograph; the downloaded PDF remains in ignored `evidence/research-slides.pdf`.
+
+Preserve the deck/page credit. Its acknowledgements thank Matt H for photo assistance; no explicit open license or individual photo byline was found. Do not label the image as original site artwork or claim an open license. The regenerated 1200×630 social preview and desktop/mobile layout were checked before publication; see NOTES.md for exact deployment and public verification evidence.

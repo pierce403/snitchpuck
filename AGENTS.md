@@ -24,7 +24,7 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 
 - The finished page passed Playwright at 1440, 1280, 768, 390, and 320px: no horizontal overflow, missing images, console exceptions, or broken story anchor. Original screenshots and QA scripts are in ignored `evidence/`. A grid child initially inherited the diagram's 378px minimum content width; `min-width: 0` plus flexible diagram steps fixed mobile overflow.
 - The live Avigilon product page no longer carries the old recording quote. Cite source 9, Motorola's 2024 utilities PDF page 4, for the historical no-recording promise; cite source 4 only for current advertised capabilities. Distinguish the network/password prerequisites, demonstrated capability, historical firmware scope, and documented exploitation.
-- Fonts are locally hosted with their OFL license notices. The hero and social image use an original conceptual illustration; avoid presenting it as a hardware diagram. No scripts, analytics, remote fonts, or embedded players are required.
+- Fonts are locally hosted with their OFL license notices. The initial hero/social artwork was conceptual; the photo revision uses a real HALO 3C image from the official research deck. Keep its source/page credit visible. No scripts, analytics, remote fonts, or embedded players are required.
 
 - The HALO advisory URL now redirects to a generic product page. Use the verified Wayback capture from September 22, 2026 for the August 2025 advisory. Confirm archive content, not just status: the direct archive response needed gzip decompression.
 
@@ -61,3 +61,11 @@ This is the independent `snitchpuck.org` research brief. Keep it separate from P
 - Owner requested www always redirect to the apex. Cloudflare zone Single Redirect `81aad0d2bb78457c97275eec2913772e` matches only `www.snitchpuck.org`, returns 301 to HTTPS apex plus original path, and preserves the query string. Public configuration is recorded in `cloudflare/www-redirect.json`; it is an operational record, not an automatically applied Wrangler resource. Preserve it during hosting changes.
 - Do not implement hostname redirects in Workers Static Assets `_redirects`: the current docs and pinned Wrangler parser reject absolute source URLs. Its shared runtime has host-matching code, which alone does not establish supported input. A path-only catchall on this shared Worker would redirect the apex to itself.
 - Live HTTP/HTTPS www checks passed, including existing assets, missing paths, and encoded query values; apex root/CSS stayed 200 without Location at the edge. Rule deployment did not republish assets or change their revision. Evidence: ignored `evidence/www-redirect-live.json`.
+
+## Research photograph and slides (2026-10-14 local)
+
+- The collaborator requested public slides and an authentic device photograph in place of the illustration. Source 10 is the official DEF CON 33 PDF; its filename uses lowercase `snitch puck` (the uppercase variant returns 404).
+- `site/assets/halo-3c-photo.webp` is the 1600×1204 derivative of the real exterior photograph on PDF page 29 (original embedded image 1913×1440, object 128). The source PDF/text are ignored `evidence/research-slides.pdf` and `.txt`.
+- Credit Reynaldo and nyx's DEF CON 33 slides, page 29. Page 101 thanks “Matt H for photo assistance”; this does not establish sole photographic authorship. No explicit open license was found, so do not claim one.
+- The new hero, ten-source list, slide link and footer passed CUA/Playwright checks at 1280×900, 390×844 and 320×844: no missing images, horizontal overflow or console errors. The source-10 anchor works. Social preview was regenerated at 1200×630 with the same photograph and inspected; exact-revision publication is the remaining gate.
+- For social artwork, decode the existing OFL WOFF2 fonts with fontTools and render with Pillow to keep the intended palette independent of browser extensions. Viewport overrides must be applied after creating a new browser tab; verify innerWidth rather than assuming the override inherited.
