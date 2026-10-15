@@ -131,3 +131,7 @@ Public source links are in `source-register.md`. Evidence files remain ignored. 
 - Ordinary apex HTTPS returned exact source bytes for the homepage, stylesheet, social preview and 404 document; deployment.json identifies the source revision. The new title is present and the old headline absent. www still returns 301 to HTTPS apex with its query preserved. Raw evidence is ignored `evidence/plain-copy-live.json`.
 - A real browser verified the new headline, loaded image and ten sources at the apex; desktop 1280px and mobile 390px have no horizontal overflow. The live screenshot is in the task artifact directory as `plain-copy-live.jpg`.
 - This following commit records verification only. Public deployment metadata intentionally identifies the content revision above.
+
+### Display-name correction
+
+- Owner requested Rey instead of Reynaldo. Updated public text/metadata, photo credit, source labels, social-image generator and current documentation wording. All homepage href/src values were compared before/after and remain byte-for-byte unchanged, including the official PDF filename. Publication verification follows the source commit.
