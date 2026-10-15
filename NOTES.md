@@ -108,3 +108,11 @@ Public source links are in `source-register.md`. Evidence files remain ignored. 
 - Coordinator extracted page 29's original 1913×1440 JPEG (object 128) into `site/assets/halo-3c-photo.webp`, 1600×1204, for the hero and social preview. Visible slide links/source 10 and a photo-assistance credit are part of this revision.
 - Credit the researchers' deck/page; page 101 thanks “Matt H for photo assistance.” No explicit open license or individual image byline was found. The deck has no URI annotations or Drive URL; its public archive also includes a demonstration video.
 - CUA/Playwright measured the new page at 1280×900, 390×844 and 320×844 with no horizontal overflow, missing images or console errors. All ten sources and the source-10 anchor render correctly. Desktop/mobile screenshots and `photo-browser-qa.json` are in the task artifact directory. The 1200×630 social image was regenerated with the real photo and visually inspected. Existing static checks/build and Wrangler dry-run passed. Exact-revision publication and live verification follow this source commit.
+
+### Verified photo publication
+
+- Published source commit `949b415149b093f81d0a88109e187a8e71181d66` manually through the existing authorized workflow after its GitHub push. Native Git remains disconnected. Build/check and dry-run passed before publication.
+- Cloudflare deployment `69a506fc-df8a-4d88-9058-6704600c6ec5` serves version `81728fa6-0f4e-47c1-a17d-92277c9e89c9` at 100%, created October 14, 2026 at 6:12 p.m. America/Los_Angeles. API readback confirms the active version.
+- Ordinary apex HTTPS now returns 200 with exact source HTML, photograph and social-image bytes; deployment.json identifies the source commit. Removed /assets/puck.svg and a missing path return 404. www still returns 301 to HTTPS apex after publication. Evidence: ignored `evidence/photo-live-http.json`.
+- Real browser loaded https://snitchpuck.org/ successfully. At 1280px and 390px the photo/fonts load, all ten sources appear, and no horizontal overflow was found. Live screenshot is in the task artifact directory as `photo-live.jpg`. The network-supplied resolver now returns CF addresses, so the previously observed ordinary visitor failure is resolved for this host.
+- This following commit records verification only; asset metadata intentionally continues to identify the content revision above.
