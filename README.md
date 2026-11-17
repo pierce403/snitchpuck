@@ -80,3 +80,16 @@ Use plain factual titles and prose throughout the public page, metadata, 404 and
 The photo revision replaces the conceptual hero/social artwork with a real HALO 3C photograph from page 29 of [Rey and nyx's official DEF CON 33 slides](https://media.defcon.org/DEF%20CON%2033/DEF%20CON%2033%20presentations/Reynaldo%20nyx%20-%20Unmasking%20the%20snitch%20puck.pdf). Source 10 and visible page links identify the deck. `site/assets/halo-3c-photo.webp` is a 1600×1204 derivative of its 1913×1440 embedded photograph; the downloaded PDF remains in ignored `evidence/research-slides.pdf`.
 
 Preserve the deck/page credit. Its acknowledgements thank Matt H for photo assistance; no explicit open license or individual photo byline was found. Do not label the image as original site artwork or claim an open license. The regenerated 1200×630 social preview and desktop/mobile layout were checked before publication; see NOTES.md for exact deployment and public verification evidence.
+
+## License
+
+Original code and documentation in this repository are licensed under the
+[Apache License 2.0](LICENSE). Third-party dependencies, quoted material, and
+other third-party content retain their respective licenses and rights.
+
+The fonts in `site/assets/` retain their SIL Open Font License notices in
+`OFL-Barlow.txt` and `OFL-DM-Sans.txt`. The HALO photograph
+(`site/assets/halo-3c-photo.webp`) and its appearance in `site/assets/social.png`
+are excluded from the Apache license grant. They derive from Rey and nyx's
+DEF CON 33 slides, page 29; no open license for that photograph is asserted.
+Existing source credits remain applicable.
